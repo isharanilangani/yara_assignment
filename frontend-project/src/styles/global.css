@@ -105,3 +105,20 @@
 .cloud-shape-container {
   text-align: center;
 }
+
+/*Details Page Style*/
+.post-image {
+  background-image: url('../assets/details.png'); 
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  border-radius: 0.25rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.post-details {
+  background-color: #d4edda; /* light green */
+  padding: 1.5rem; /* .p-4 */
+  border-radius: 0.25rem; /* .rounded */
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); /* .shadow */
+}

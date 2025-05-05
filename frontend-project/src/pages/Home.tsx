@@ -7,8 +7,16 @@ const Home: React.FC = () => {
   return (
     <div className="container mt-4">
       <h2>Posts</h2>
+
       {loading && <div className="spinner-border text-primary" role="status"></div>}
+
       {error && <div className="alert alert-danger">{error}</div>}
+
+      {!loading && !error && data.length === 0 && (() => {
+        console.warn("No posts returned from API.");
+        return <div className="alert alert-warning">No posts available.</div>;
+      })()}
+
       <ul className="list-group">
         {data.map(post => (
           <li className="list-group-item" key={post.id}>

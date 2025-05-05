@@ -1,11 +1,8 @@
+// frontend-project/src/App.tsx
 import React from 'react';
 
 function App() {
-  return (
-    <div className="App">
-      
-    </div>
-  );
+  return <div>Hello World</div>;
 }
 
 export default App;

@@ -1,9 +1,20 @@
 :root {
   --primary-color: #2ecc71;
   --secondary-color: white;
-  --text-color: #000;
+  --light-bg-color:#d4edda;
+  --text-color: #2c2c2c;
   --btn-gradient-start: #00b894;
   --btn-gradient-end: #00cec9;
+}
+
+.btn-primary {
+  background: linear-gradient(to right, var(--btn-gradient-start), var(--btn-gradient-end));
+  border: none !important;
+  outline: none !important;
+}
+
+.btn-primary:hover {
+  opacity: 0.6;
 }
 
 /* Navbar wrapper */
@@ -31,15 +42,6 @@
     color: var(--primary-color) !important;
   }
   
-  .custom-btn {
-    background: linear-gradient(to right, var(--btn-gradient-start), var(--btn-gradient-end));
-    border: none;
-  }
-  
-  .custom-btn:hover {
-    opacity: 0.7;
-  }
-  
   /* Animation keyframes */
   @keyframes slideDown {
     0% {
@@ -50,5 +52,35 @@
       transform: translateY(0);
       opacity: 1;
     }
+  }
+
+  /*PostFetch Style*/
+  .bg-light-green {
+    background-color: var(--light-bg-color);
+  }
+
+  /*PostCard Style*/
+  .card {
+    border: 1px solid var(--secondary-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px var(--text-color);
+    transition: transform 0.2s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .card-body {
+    padding: 1.5rem;
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  
+  .card-text {
+    font-size: 1rem;
   }
   

@@ -22,7 +22,7 @@ const Home: React.FC = () => {
           </p>
           <a
             href="#posts"
-            className="mt-8 bg-gradient-to-r from-green-400 to-teal-500 text-white px-6 py-3 rounded-full font-semibold shadow hover:from-green-500 hover:to-teal-600 transition"
+            className="btn btn-primary rounded-pill px-4"
           >
             Explore
           </a>

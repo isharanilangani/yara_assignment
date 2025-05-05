@@ -4,7 +4,7 @@ import "../styles/global.css";
 
 const Navbar: React.FC = () => {
   return (
-    <nav className="custom-navbar shadow-sm fixed-top">
+    <nav className="custom-navbar fixed-top">
       <div className="container d-flex align-items-center justify-content-between">
         <div className="d-flex align-items-center">
           <div>
@@ -23,16 +23,6 @@ const Navbar: React.FC = () => {
               }
             >
               Home
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink
-              to="/details"
-              className={({ isActive }) =>
-                `nav-link ${isActive ? "active" : ""}`
-              }
-            >
-              Details
             </NavLink>
           </li>
           <li className="nav-item">

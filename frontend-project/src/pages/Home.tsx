@@ -3,46 +3,45 @@ import PostsFetch from "../components/PostsFetch";
 
 const Home: React.FC = () => {
   return (
-    <div className="relative">
-      <section
-        className="relative block overflow-hidden h-[600px] w-full bg-no-repeat bg-cover bg-center"
-        style={{
-          backgroundImage: "url('/assets/bg.png')",
-        }}
-      >
-        <div className="absolute inset-0 bg-white opacity-60 z-[1]"></div>
+    <div className="position-relative">
+      <section className="pt-5 bg-white" style={{ marginTop: "80px" }}>
+        <div className="container">
+          <div className="row align-items-center">
+            <div className="col-md-6 text-start">
+              <h1 className="display-4 fw-bold text-dark">
+                Innovative Solutions for Modern Businesses
+              </h1>
+              <p className="lead text-secondary mt-3">
+                Empowering your vision with expertly crafted digital products
+                that deliver real results.
+              </p>
+              <a
+                href="#posts"
+                className="btn btn-primary mt-3 px-4 rounded-pill"
+              >
+                Explore
+              </a>
+            </div>
 
-        <div className="relative z-[2] flex flex-col justify-center items-center text-center h-full px-4">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
-            Innovative Solutions for Modern Businesses
-          </h1>
-          <p className="mt-4 text-lg text-gray-700 max-w-xl">
-            Empowering your vision with expertly crafted digital products that
-            deliver real results.
-          </p>
-          <a
-            href="#posts"
-            className="btn btn-primary rounded-pill px-4"
-          >
-            Explore
-          </a>
-        </div>
+            {/* Oval Image - Right */}
+            <div className="col-md-6 cloud-shape-container">
+              <div className="cloud-shape mx-auto"></div>
 
-        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-[1]">
-          <svg
-            className="relative block w-full h-[100px]"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 1440 320"
-          >
-            <path
-              fill="#ffffff"
-              d="M0,160L60,165.3C120,171,240,181,360,176C480,171,600,149,720,133.3C840,117,960,107,1080,117.3C1200,128,1320,160,1380,176L1440,192V320H0Z"
-            />
-          </svg>
+              {/* SVG with Cloud Shape Definition */}
+              <svg width="0" height="0">
+                <defs>
+                  <clipPath id="cloud-shape" clipPathUnits="objectBoundingBox">
+                    <path d="M0.4,0 C0.8,0.1 0.8,0 0.8,0.1 C0.8,0.2 1,0.6 0.8,0.8 C0.8,1 0.5,1 0.4,0.9 C0.2,0.8 0.2,0.7 0.2,0.6 C0.1,0.5 0,0.4 0.3,0.1 Z" />
+                  </clipPath>
+                </defs>
+              </svg>
+            </div>
+          </div>
         </div>
       </section>
 
-      <div id="posts" className="container mx-auto mt-10 px-4">
+      {/* Posts */}
+      <div id="posts" className="container mt-5">
         <PostsFetch />
       </div>
     </div>

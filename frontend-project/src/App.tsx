@@ -11,7 +11,7 @@ const App: React.FC = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/details" element={<Details />} />
+        <Route path="/details/:postId" element={<Details />} /> {/* Dynamic route for post details */}
         <Route path="/about" element={<About />} />
       </Routes>
     </Router>

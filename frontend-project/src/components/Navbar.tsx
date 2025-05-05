@@ -47,7 +47,7 @@ const Navbar: React.FC = () => {
           </li>
         </ul>
 
-        <a className="btn custom-btn rounded-pill px-4" href="#consultation">
+        <a className="btn btn-primary rounded-pill px-4" href="#consultation">
           Free Consultation
         </a>
       </div>

@@ -1,43 +1,75 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { usePosts } from "../hooks/usePosts";
+import PostCard from "./PostCard";
 
 const PostsFetch: React.FC = () => {
   const { loading, error, data } = usePosts();
+  const [visibleCount, setVisibleCount] = useState(3);
+  const [exploreClicked, setExploreClicked] = useState(false);
+  const loaderRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (!exploreClicked) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && visibleCount < data.length) {
+          setVisibleCount((prev) => Math.min(prev + 3, data.length));
+        }
+      },
+      { threshold: 1.0 }
+    );
+
+    const loader = loaderRef.current;
+    if (loader) observer.observe(loader);
+
+    return () => {
+      if (loader) observer.unobserve(loader);
+    };
+  }, [exploreClicked, visibleCount, data.length]);
+
+  const visiblePosts = data.slice(0, visibleCount);
 
   return (
-    <div>
-      <h2 className="mb-3">Posts</h2>
+    <div className="bg-light-green py-5 px-5">
       {loading && (
         <div className="spinner-border text-primary" role="status"></div>
       )}
 
       {error && <div className="alert alert-danger">{error}</div>}
 
-      {!loading &&
-        !error &&
-        data.length === 0 &&
-        (() => {
-          console.warn("No posts returned from API.");
-          return <div className="alert alert-warning">No posts available.</div>;
-        })()}
+      {!loading && !error && data.length === 0 && (
+        <div className="alert alert-warning text-center">
+          No posts available.
+        </div>
+      )}
 
       {!loading && !error && data.length > 0 && (
         <>
-          <ul className="list-group">
-            {data.map((post) => (
-              <li className="list-group-item" key={post.id}>
-                <h5 className="fw-semibold">{post.title}</h5>
-                <p className="mb-0">{post.body}</p>
-              </li>
+          <div className="row justify-content-center">
+            {visiblePosts.map((post) => (
+              <div className="col-md-4 mb-4" key={post.id}>
+                <PostCard id={post.id} title={post.title} body={post.body} />
+              </div>
             ))}
-          </ul>
+          </div>
 
-          <a
-            className="btn btn-primary btn-lg rounded-pill px-4 mb-4"
-            href="#services"
-          >
-            Explore
-          </a>
+          {!exploreClicked && data.length > 3 && (
+            <div className="text-center mt-4">
+              <button
+                className="btn btn-primary rounded-pill px-4"
+                onClick={() => setExploreClicked(true)}
+              >
+                Explore
+              </button>
+            </div>
+          )}
+
+          {exploreClicked && visibleCount < data.length && (
+            <div ref={loaderRef} className="text-center mt-4">
+              <div className="spinner-border text-secondary" role="status"></div>
+            </div>
+          )}
         </>
       )}
     </div>

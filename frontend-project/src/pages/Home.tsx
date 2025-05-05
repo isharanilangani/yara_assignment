@@ -1,58 +1,49 @@
 import React from "react";
-import { usePosts } from "../hooks/usePosts";
+import PostsFetch from "../components/PostsFetch";
 
 const Home: React.FC = () => {
-  const { loading, error, data } = usePosts();
-
   return (
-    <div className="container mt-5">
-      <div className="text-center mb-5">
-        <h1 className="display-5 fw-bold">We Create Products</h1>
-        <p className="lead text-muted">
-          Our team delivers innovative solutions that drive business growth.
-        </p>
-        <a
-          className="btn btn-primary btn-lg rounded-pill px-4"
-          href="#services"
-        >
-          Explore Services
-        </a>
-      </div>
+    <div className="relative">
+      <section
+        className="relative block overflow-hidden h-[600px] w-full bg-no-repeat bg-cover bg-center"
+        style={{
+          backgroundImage: "url('/assets/bg.png')",
+        }}
+      >
+        <div className="absolute inset-0 bg-white opacity-60 z-[1]"></div>
 
-      <div>
-        <h2 className="mb-3">Posts</h2>
+        <div className="relative z-[2] flex flex-col justify-center items-center text-center h-full px-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
+            Innovative Solutions for Modern Businesses
+          </h1>
+          <p className="mt-4 text-lg text-gray-700 max-w-xl">
+            Empowering your vision with expertly crafted digital products that
+            deliver real results.
+          </p>
+          <a
+            href="#posts"
+            className="mt-8 bg-gradient-to-r from-green-400 to-teal-500 text-white px-6 py-3 rounded-full font-semibold shadow hover:from-green-500 hover:to-teal-600 transition"
+          >
+            Explore
+          </a>
+        </div>
 
-        <a
-          className="btn btn-primary btn-lg rounded-pill px-4 mb-4"
-          href="#services"
-        >
-          Explore Services
-        </a>
+        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-[1]">
+          <svg
+            className="relative block w-full h-[100px]"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1440 320"
+          >
+            <path
+              fill="#ffffff"
+              d="M0,160L60,165.3C120,171,240,181,360,176C480,171,600,149,720,133.3C840,117,960,107,1080,117.3C1200,128,1320,160,1380,176L1440,192V320H0Z"
+            />
+          </svg>
+        </div>
+      </section>
 
-        {loading && (
-          <div className="spinner-border text-primary" role="status"></div>
-        )}
-
-        {error && <div className="alert alert-danger">{error}</div>}
-
-        {!loading &&
-          !error &&
-          data.length === 0 &&
-          (() => {
-            console.warn("No posts returned from API.");
-            return (
-              <div className="alert alert-warning">No posts available.</div>
-            );
-          })()}
-
-        <ul className="list-group">
-          {data.map((post) => (
-            <li className="list-group-item" key={post.id}>
-              <h5 className="fw-semibold">{post.title}</h5>
-              <p className="mb-0">{post.body}</p>
-            </li>
-          ))}
-        </ul>
+      <div id="posts" className="container mx-auto mt-10 px-4">
+        <PostsFetch />
       </div>
     </div>
   );

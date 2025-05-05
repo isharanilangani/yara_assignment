@@ -1,4 +1,3 @@
-// Navbar.tsx
 import { NavLink } from "react-router-dom";
 import "../styles/global.css";
 

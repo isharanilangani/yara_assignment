@@ -143,6 +143,15 @@
   color: #2ecc71;
 }
 
+.hover-list-item {
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.hover-list-item:hover {
+  transform: translateX(6px);
+}
+
 /* Mobile view: Change hover color for dropdown items */
 @media (max-width: 768px) {
   .dropdown-item.active,

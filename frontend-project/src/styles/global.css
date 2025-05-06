@@ -95,7 +95,7 @@
   width: 100%;
   max-width: 500px;
   height: 550px;
-  background-image: url('../assets/bg.png');
+  background-image: url("../assets/bg.png");
   background-size: cover;
   background-position: center;
   clip-path: url(#cloud-shape);
@@ -108,7 +108,7 @@
 
 /*Details Page Style*/
 .post-image {
-  background-image: url('../assets/details.png'); 
+  background-image: url("../assets/details.png");
   background-size: cover;
   background-position: center;
   width: cover;
@@ -141,4 +141,28 @@
 
 .home-link:hover {
   color: #2ecc71;
+}
+
+/* Mobile view: Change hover color for dropdown items */
+@media (max-width: 768px) {
+  .dropdown-item.active,
+  .dropdown-item:active {
+    background-color: var(--light-bg-color) !important; /* light green */
+    color: black !important; /* Optional: ensures text remains readable */
+  }
+
+  .dropdown-fade {
+    animation: fadeDropdown 0.2s ease-in-out;
+  }
+  
+  @keyframes fadeDropdown {
+    0% {
+      opacity: 0;
+      transform: translateY(-10%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }

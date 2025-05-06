@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { usePosts } from "../hooks/usePosts";
+import PostDetail from "../components/PostDetail"; // Import PostDetail component
+import { Link } from "react-router-dom"; // Import Link for navigation
 import "../styles/global.css";
 
 const Details: React.FC = () => {
@@ -19,23 +21,32 @@ const Details: React.FC = () => {
   if (error) return <div className="container mt-4">Error: {error}</div>;
 
   return (
-    <div className="container mt-5">
+    <>
       {postDetails ? (
-        <div className="row align-items-center">
-          {/* Styled Background Image as Div */}
-          <div className="col-md-6 text-center mb-4 mb-md-0">
-            <div className="post-image w-100"></div>
+        <>
+          {/* Background Image */}
+          <div className="post-image position-relative">
+            <div className="header-navigation position-absolute top-0 start-0 m-3">
+              <Link to="/" className="home-link me-1">
+                <i
+                  className="bi bi-house-door"
+                  style={{ fontSize: "20px" }}
+                ></i>{" "}
+                Home
+              </Link>
+              <span className="text-white">&nbsp;&gt; Details</span>
+            </div>
           </div>
 
-          <div className="col-md-6 post-details">
-            <h2 className="fw-bold text-dark">{postDetails.title}</h2>
-            <p className="text-secondary mt-3">{postDetails.body}</p>
+          {/* Post Content */}
+          <div className="container">
+            <PostDetail title={postDetails.title} body={postDetails.body} />
           </div>
-        </div>
+        </>
       ) : (
         <p>Post not found.</p>
       )}
-    </div>
+    </>
   );
 };
 

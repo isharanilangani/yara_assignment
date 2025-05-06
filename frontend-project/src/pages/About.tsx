@@ -17,7 +17,7 @@ const About: React.FC = () => {
       </div>
 
       {/* Text content section */}
-      <div className="d-flex justify-content-center align-items-center">
+      <div className="container">
         <AboutContent />
       </div>
     </>

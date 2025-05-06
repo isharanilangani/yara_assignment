@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { usePosts } from "../hooks/usePosts";
-import PostDetail from "../components/PostDetail"; // Import PostDetail component
-import { Link } from "react-router-dom"; // Import Link for navigation
+import PostDetail from "../components/PostDetail";
 import "../styles/global.css";
 
 const Details: React.FC = () => {
@@ -24,24 +23,18 @@ const Details: React.FC = () => {
     <>
       {postDetails ? (
         <>
-          {/* Background Image */}
+          {/* Image Section */}
           <div className="post-image position-relative">
             <div className="header-navigation position-absolute top-0 start-0 m-3 fw-bold">
               <Link to="/" className="home-link me-1">
-                <i
-                  className="bi bi-house-door fw-bold"
-                  style={{ fontSize: "20px" }}
-                ></i>{" "}
+                <i className="bi bi-house-door fw-bold icon-home"></i>{" "}
               </Link>
               <span className="text-white">&nbsp;&gt; Details</span>
             </div>
           </div>
 
           {/* Post Content */}
-          <div
-            className="container responsive-post-container"
-            style={{ marginTop: "-70px", zIndex: 2, position: "relative" }}
-          >
+          <div className="container container-margin">
             <PostDetail title={postDetails.title} body={postDetails.body} />
           </div>
         </>

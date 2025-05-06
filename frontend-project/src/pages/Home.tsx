@@ -1,6 +1,6 @@
 import React from "react";
 import PostsFetch from "../components/PostsFetch";
-import "../styles/global.css"; // Make sure your styles are imported
+import "../styles/global.css";
 
 const Home: React.FC = () => {
   return (
@@ -8,7 +8,7 @@ const Home: React.FC = () => {
       <section className="pt-5 bg-white" style={{ marginTop: "80px" }}>
         <div className="container">
           <div className="row align-items-center text-center text-md-start">
-            {/* Image on top for mobile, right on desktop */}
+            {/* Image Section */}
             <div className="col-md-6 order-1 order-md-2 cloud-shape-container">
               <div className="cloud-shape mx-auto"></div>
 
@@ -22,7 +22,7 @@ const Home: React.FC = () => {
               </svg>
             </div>
 
-            {/* Text below image on mobile, left on desktop */}
+            {/* Text Section */}
             <div className="col-md-6 order-2 order-md-1">
               <h1 className="display-5 fw-bold text-dark">
                 Innovative Solutions for Modern Businesses

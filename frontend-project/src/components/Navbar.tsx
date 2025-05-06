@@ -44,22 +44,18 @@ const Navbar: React.FC = () => {
           </li>
         </ul>
 
-        {/* Mobile view: hamburger + subscribe */}
+        {/* Mobile view*/}
         <div className="d-flex align-items-center">
           <div className="d-md-none me-3">
             <button
               className="btn btn-primary rounded-pill px-3 py-2 d-flex align-items-center"
               onClick={toggleDropdown}
-              style={{ fontSize: "1.2rem" }}
             >
               <i className={`bi ${dropdownOpen ? "bi-x-lg" : "bi-list"}`}></i>
             </button>
 
             {dropdownOpen && (
-              <div
-                className="dropdown-menu d-block dropdown-fade"
-                style={{ position: "absolute", top: "50px", right: "20px", zIndex: 1000 }}
-              >
+              <div className="dropdown-menu d-block dropdown-fade">
                 <NavLink
                   to="/"
                   className="dropdown-item"
@@ -85,7 +81,6 @@ const Navbar: React.FC = () => {
             <span className="d-none d-md-block">Subscribe</span>
             <i
               className="bi bi-envelope-fill d-block d-md-none"
-              style={{ fontSize: "1.5rem" }}
             ></i>
           </a>
         </div>

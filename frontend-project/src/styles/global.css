@@ -113,8 +113,8 @@
   background-position: center;
   width: cover;
   height: 400px;
-  border-radius: 0.25rem;
-  box-shadow: 0 0.5rem 1rem var(--shadow-color);
+  position: relative;
+  z-index: 1;
 }
 
 .header-navigation {
@@ -154,7 +154,7 @@
   .dropdown-fade {
     animation: fadeDropdown 0.2s ease-in-out;
   }
-  
+
   @keyframes fadeDropdown {
     0% {
       opacity: 0;
@@ -164,5 +164,19 @@
       opacity: 1;
       transform: translateY(0);
     }
+  }
+
+  .cloud-shape-container {
+    max-width: 250px;
+  }
+
+  .cloud-shape {
+    padding-top: 100%;
+  }
+
+  .responsive-post-container {
+    margin-top: -30px;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }

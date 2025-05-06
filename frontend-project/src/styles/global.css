@@ -154,7 +154,7 @@
   .dropdown-fade {
     animation: fadeDropdown 0.2s ease-in-out;
   }
-  
+
   @keyframes fadeDropdown {
     0% {
       opacity: 0;
@@ -164,5 +164,13 @@
       opacity: 1;
       transform: translateY(0);
     }
+  }
+
+  .cloud-shape-container {
+    max-width: 250px;
+  }
+
+  .cloud-shape {
+    padding-top: 100%; /* Resize cloud image for smaller screens */
   }
 }

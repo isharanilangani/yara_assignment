@@ -2,9 +2,16 @@ import React, { useEffect, useRef, useState } from "react";
 import { usePosts } from "../hooks/usePosts";
 import PostCard from "./PostCard";
 
+const getInitialVisibleCount = () => {
+  const width = window.innerWidth;
+  if (width < 768) return 1;
+  if (width >= 768 && width < 1024) return 2;
+  return 3;
+};
+
 const PostsFetch: React.FC = () => {
   const { loading, error, data } = usePosts();
-  const [visibleCount, setVisibleCount] = useState(3);
+  const [visibleCount, setVisibleCount] = useState(getInitialVisibleCount);
   const [exploreClicked, setExploreClicked] = useState(false);
   const loaderRef = useRef<HTMLDivElement | null>(null);
 
@@ -31,9 +38,11 @@ const PostsFetch: React.FC = () => {
   const visiblePosts = data.slice(0, visibleCount);
 
   return (
-    <div className="bg-light-green py-5 px-5">
+    <div className="bg-light-green py-5 px-4">
       {loading && (
-        <div className="spinner-border text-primary" role="status"></div>
+        <div className="text-center">
+          <div className="spinner-border text-primary" role="status"></div>
+        </div>
       )}
 
       {error && <div className="alert alert-danger">{error}</div>}
@@ -46,15 +55,15 @@ const PostsFetch: React.FC = () => {
 
       {!loading && !error && data.length > 0 && (
         <>
-          <div className="row justify-content-center">
+          <div className="row">
             {visiblePosts.map((post) => (
-              <div className="col-md-4 mb-4" key={post.id}>
+              <div className="col-sm-12 col-md-6 col-lg-4 mb-4" key={post.id}>
                 <PostCard id={post.id} title={post.title} body={post.body} />
               </div>
             ))}
           </div>
 
-          {!exploreClicked && data.length > 3 && (
+          {!exploreClicked && data.length > visibleCount && (
             <div className="text-center mt-4">
               <button
                 className="btn btn-primary rounded-pill px-4"

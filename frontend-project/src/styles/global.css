@@ -100,6 +100,12 @@
   background-position: center;
   clip-path: url(#cloud-shape);
   -webkit-clip-path: url(#cloud-shape);
+  transition: transform 0.5s ease-in-out, filter 0.5s ease-in-out;
+}
+
+.cloud-shape:hover {
+  transform: scale(1.02) rotate(1deg);
+  filter: brightness(1.05) contrast(1.1);
 }
 
 .cloud-shape-container {
